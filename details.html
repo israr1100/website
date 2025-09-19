@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Application - General Details</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One:ital@0;1&family=Caveat&family=Edu+TAS+Beginner:wght@400;500;600;700&family=Oswald:wght@300&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;1,100&family=Rajdhani:wght@300&family=Roboto:wght@100&family=Satisfy&family=Shadows+Into+Light&family=Zeyada&display=swap');
+*
+    * {
+      box-sizing: border-box;
+    }
+    nav h1
+{
+    color: white;
+    margin-right: auto;
+    font-family: "poppins";
+    text-transform: uppercase;
+    padding: 0px 80px;
+    font-size: 30px;
+    cursor: pointer;
+}
+nav h1:hover
+{
+    color: #EC7969;
+    transition: 1s;
+}
+
+    body {
+      font-family: 'poppins';
+      background: #1d1d1d;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      background: #262626;
+      padding: 30px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #EC7969;
+    }
+
+    label {
+        color: #EC7969;
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #000000;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #EC7969;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff998c;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <h1>ella models.</h1></nav>
+  <div class="container">
+    <h2>General Details Application</h2>
+    <form id="applicationForm">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required />
+      <div class="error" id="phoneError">Enter a valid 10-digit number</div>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('applicationForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const phoneInput = document.getElementById('phone');
+      const phoneError = document.getElementById('phoneError');
+      const phonePattern = /^[0-9]{10}$/;
+
+      if (!phonePattern.test(phoneInput.value)) {
+        phoneError.style.display = 'block';
+        return;
+      } else {
+        phoneError.style.display = 'none';
+      }
+
+      // You can add more validation or send data to a server here
+      alert('Application submitted successfully!');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
